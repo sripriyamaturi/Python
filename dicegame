@@ -1,0 +1,59 @@
+'''write a program which accepts an input number N. Simulate a dice game of 2 players A&B. Each of the players takes turns to roll a 6 faced dice and sums their results. The player whose sum of dice roll results reaches N first wins the game. If someone rolls a 6 on dice, he gets another turn. For example:
+ 
+Say N=10
+A.             B
+5              1
+4              4
+1              2
+Output: A wins.
+Explanation: at end of four rounds sum of A's roll = 10 and B's roll = 7
+ 
+
+Example 2:
+N=30
+A.      B
+6,4.    2
+1.      6,6,1
+5       5
+5       6,1
+4.      5
+ Output: B wins.
+ 
+If both reach N in the same turn whose sum is bigger wins and if that is equal it is a tie.
+'''
+
+import random
+
+N = 20
+
+def dice_outputs():
+    dice_output = random.randint(1, 6)
+    print(dice_output)
+    return dice_output
+
+
+def winner() :
+    playerA = 0
+    playerB = 0
+    while(1):
+        print(" A's turn! ")
+        playerA += dice_outputs()
+        print(" B's turn! ")
+        playerB += dice_outputs()
+        
+        if(playerA == playerB and playerA == N):
+            return 'tie'
+
+        if(playerA > N and playerB > N and playerA > playerB):
+            return 'A wins1'
+        if(playerA > N and playerB > N and playerA < playerB):
+            return 'B wins'
+
+        if(playerA >= N):
+            return ' A wins2'
+
+        if(playerB >= N):
+            return 'B wins'
+
+t = winner()
+print(t)
